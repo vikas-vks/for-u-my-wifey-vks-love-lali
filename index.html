@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Wifey ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:linear-gradient(135deg,#ffb3c7,#ffc1d6,#ffd6e8);
+  font-family:'Quicksand',sans-serif;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+.container{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.hidden{display:none}
+
+/* hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation:floatUp 6s linear forwards;
+}
+@keyframes floatUp{
+  to{transform:translateY(-110vh);opacity:0}
+}
+
+/* images */
+.cat{
+  width:clamp(280px,85vw,440px);
+  animation:pop .6s ease,float 4s ease-in-out infinite;
+}
+.cat-small{
+  width:clamp(210px,65vw,320px);
+}
+
+/* FINAL IMAGE – NORMAL SCROLL */
+.cat-final{
+  width:100vw;
+  max-width:100%;
+  height:auto;
+  max-height:100vh;
+  object-fit:contain;
+}
+
+/* animations */
+@keyframes pop{
+  from{transform:scale(.75);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+@keyframes float{
+  50%{transform:translateY(-10px)}
+}
+
+/* text */
+.text-main{
+  font-family:'Dancing Script',cursive;
+  font-size:2rem;
+  margin-top:14px;
+}
+
+.text-subline{
+  display:block;
+  font-family:'Quicksand',sans-serif;
+  font-size:0.95rem;
+  margin-top:6px;
+  opacity:0;
+  animation:subFade 1.2s ease forwards;
+  animation-delay:.4s;
+}
+@keyframes subFade{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:.9;transform:translateY(0)}
+}
+
+/* buttons */
+button{
+  padding:16px 44px;
+  margin:14px;
+  font-size:1.05rem;
+  border:none;
+  border-radius:22px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff4f81,#ff7aa8);
+  color:white;
+}
+
+/* flash */
+.flash{
+  position:fixed;
+  inset:0;
+  background:white;
+  opacity:0;
+  pointer-events:none;
+  z-index:999;
+}
+.flash.active{
+  animation:flash 1s ease;
+}
+@keyframes flash{
+  20%,70%{opacity:1}
+}
+
+/* FINAL SCROLL */
+#sHold{
+  min-height:auto;
+  padding-top:40px;
+}
+
+.scroll-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+}
+
+.scroll-text{
+  margin-top:26px;
+  max-width:92vw;
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(1.2rem,5vw,1.6rem);
+  line-height:1.6;
+}
+
+.center{text-align:center}
+.justify{text-align:justify}
+.break{margin:18px 0}
+
+/* ========================= */
+/* PHONE TEXT FIT FIX ONLY   */
+/* ========================= */
+@media (max-width: 600px){
+
+  .text-main{
+    font-size:1.6rem;
+  }
+
+  .scroll-text{
+    font-size:clamp(1.05rem, 4.8vw, 1.35rem);
+    line-height:1.55;
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .justify{
+    text-align:left;
+  }
+
+}
+
+/* ========================= */
+/* COPYRIGHT TEXT (ADDED)    */
+/* ========================= */
+.copyright{
+  width:100%;
+  text-align:center;
+  font-weight:bold;
+  font-size:0.85rem;
+  padding:18px 10px 24px;
+  opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="flash" id="flash"></div>
+
+<div class="container">
+
+<div id="s1">
+  <img class="cat" src="1.png">
+  <div class="text-main" id="t1"></div>
+  <button id="btnNo">No</button>
+  <button id="btnYes">Yes</button>
+</div>
+
+<div id="sNo" class="hidden">
+  <img class="cat" src="2.png">
+  <div class="text-main">How Dare Youuu!</div>
+</div>
+
+<div id="sNoText" class="hidden">
+  <img class="cat" src="3.png">
+  <div class="text-main">Go Back Idiot!!! 😤</div>
+  <button id="btnBack">BACK</button>
+</div>
+
+<div id="sYes" class="hidden">
+  <img class="cat" src="4.png">
+  <div class="text-main">
+    Hehe!
+    <span class="text-subline">click below 👇 for the surprise!!</span>
+  </div>
+  <button id="btnNext1">Next</button>
+</div>
+
+<div id="sGift" class="hidden">
+  <img class="cat cat-small" src="5.png" id="btnGift">
+  <div class="text-main">
+    Happy New Year Wifey!!! 😚🥰❤️
+    <span class="text-subline">click on the gift box</span>
+  </div>
+</div>
+
+<div id="sCam" class="hidden">
+  <img class="cat" src="6.png" id="btnCam">
+  <div class="text-main">
+    SMILEEEEE!!!
+    <span class="text-subline">click on the camera to reveal photo!!</span>
+  </div>
+</div>
+
+<div id="sHold" class="hidden">
+  <div class="scroll-wrap">
+    <img class="cat-final" src="7.png">
+
+    <div class="scroll-text center">
+      😚❤️😚 Happy New Year Wifey 😚❤️😚
+      <div class="break"></div>
+    </div>
+
+    <div class="scroll-text justify">
+      I just want you to know that how grateful I am to have you gotha 🥹❤️
+      You made my years better and better in many ways you probably don’t even realize 🥺❤️🥰
+      From random laughs, caring, fights, cries to late-night talks, everything with you feels very special chinni maa 😭😭❤️
+      I’m really excited and happy to step into this new year (2026) with you by my side 🥺❤️
+      ik nav jote yali ella and yalla years kuda egge ankondu bandvi
+      nxt years pakka nav jote yalli celebrate madonna anta
+      bt edu ik that hagolla ninge anta
+      bt its k kandha nxt year gu wait madteni
+      haga nodonna haguta anta
+      thn also no andre until hago tanaka wait madteni
+      thn jote yalli celebrate madonna kandha 🥺🥹😢😭❤️
+      No big promises bcoz uk and ik wt promises are anta
+      same promises na e year and yalla year kuda break madodu beda chinna
+      kone tanaka jote yalli eronna kandha maa
+      and by choosing we both every day k na 😭😭❤️ nanna yavatu bitti kodbeda and bitti hogbeda kandha and i'm also not giving up on u 😭😭😭❤️
+    </div>
+
+    <div class="scroll-text center">
+      <div class="break"></div>
+      I love you so much 🥺❤️ Wifey 😚🙈
+      <div class="break"></div>
+      Huuummmmmmaaa 😚😚😚❤️
+      <div class="break"></div>
+      I miss you kanoo 😭😭😭😭
+      <div class="break"></div>
+      Once again 🥺
+      <div class="break"></div>
+      Happy New Year Nan Muddu Hendathi 😚❤️🙈🥰
+      <br><br><br><br><br><br>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- COPYRIGHT (ADDED AT VERY BOTTOM) -->
+<div class="copyright">
+  © Vikas ♡ Lalisha. All rights reserved.
+</div>
+
+<audio id="camSound" src="Camera Sound.mp3"></audio>
+<audio id="huhSound" src="Huh Sound.mp3"></audio>
+<audio id="humphSound" src="Humph Sound.mp3" loop></audio>
+<audio id="loveSong" src="Love Song.mp3" loop></audio>
+
+<script>
+const s1=document.getElementById("s1");
+const sNo=document.getElementById("sNo");
+const sNoText=document.getElementById("sNoText");
+const sYes=document.getElementById("sYes");
+const sGift=document.getElementById("sGift");
+const sCam=document.getElementById("sCam");
+const sHold=document.getElementById("sHold");
+const flash=document.getElementById("flash");
+
+const btnNo=document.getElementById("btnNo");
+const btnYes=document.getElementById("btnYes");
+const btnBack=document.getElementById("btnBack");
+const btnNext1=document.getElementById("btnNext1");
+const btnGift=document.getElementById("btnGift");
+const btnCam=document.getElementById("btnCam");
+
+const huhSound=document.getElementById("huhSound");
+const humphSound=document.getElementById("humphSound");
+const loveSong=document.getElementById("loveSong");
+const camSound=document.getElementById("camSound");
+
+function hideAll(){
+  [s1,sNo,sNoText,sYes,sGift,sCam,sHold].forEach(e=>e.classList.add("hidden"));
+}
+
+/* typing */
+const text1="Hey! I Made Something For You";
+const text2="Will you see it?";
+let i=0;
+const t1=document.getElementById("t1");
+const type=setInterval(()=>{
+  if(i<text1.length){
+    t1.innerHTML+=text1[i];
+  }else if(i===text1.length){
+    t1.innerHTML+=`<span class="text-subline">${text2}</span>`;
+  }
+  i++;
+  if(i>text1.length) clearInterval(type);
+},45);
+
+/* hearts */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},600);
+
+/* events */
+btnNo.onclick=()=>{
+  hideAll();
+  sNo.classList.remove("hidden");
+  huhSound.play();
+  setTimeout(()=>{
+    hideAll();
+    sNoText.classList.remove("hidden");
+    humphSound.play();
+  },2800);
+};
+
+btnBack.onclick=()=>{
+  humphSound.pause();
+  humphSound.currentTime=0;
+  hideAll();
+  s1.classList.remove("hidden");
+};
+
+btnYes.onclick=()=>{
+  hideAll();
+  sYes.classList.remove("hidden");
+};
+
+btnNext1.onclick=()=>{
+  hideAll();
+  sGift.classList.remove("hidden");
+};
+
+btnGift.onclick=()=>{
+  hideAll();
+  sCam.classList.remove("hidden");
+};
+
+btnCam.onclick=()=>{
+  camSound.play();
+  flash.classList.add("active");
+  setTimeout(()=>{
+    flash.classList.remove("active");
+    loveSong.play();
+    hideAll();
+    sHold.classList.remove("hidden");
+  },900);
+};
+</script>
+
+</body>
+</html>
